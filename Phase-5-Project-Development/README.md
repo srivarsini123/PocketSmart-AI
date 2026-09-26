@@ -1,58 +1,145 @@
-# Phase 5 - Project Development
+# PocketSmart AI
 
-## Project Name
-PocketSmart AI - Your Smart Budget and Recommendation Assistant
-
-## 1. Development Overview
-
-PocketSmart AI is developed as a web-based smart budgeting
-assistant using Python, Flask, JavaScript and Google Gemini API.
-
-## 2. Technologies Used
+PocketSmart AI is a beginner-friendly smart budget and recommendation assistant built with:
 
 - Python
 - Flask
 - HTML
 - CSS
 - JavaScript
-- Google Gemini API
 - SQLite
-- Visual Studio Code
+- Google Gemini API
 
-## 3. Project Structure
+## Features
 
-The project contains the following main files:
+1. Enter monthly income.
+2. Add expense categories and amounts.
+3. Calculate total expenses.
+4. Calculate remaining balance.
+5. Analyze spending by category.
+6. Set a savings goal.
+7. Add user needs/preferences.
+8. Get Gemini AI budgeting suggestions.
+9. Store recent analyses in SQLite.
+10. Continue using local suggestions if Gemini is not configured or temporarily unavailable.
 
-- app.py - Backend application
-- index.html - User interface
-- style.css - Interface styling
-- script.js - Frontend interaction
-- requirements.txt - Required Python packages
+## Project structure
 
-## 4. Development Process
+```text
+PocketSmart-AI/
+├── app.py
+├── requirements.txt
+├── .env.example
+├── .gitignore
+├── README.md
+├── templates/
+│   └── index.html
+├── static/
+│   ├── style.css
+│   └── script.js
+└── database/
+    └── pocketsmart.db   # created automatically when the app starts
+```
 
-1. Created the Flask application.
-2. Designed the PocketSmart AI interface.
-3. Implemented income and expense inputs.
-4. Implemented budget calculations.
-5. Added expense analysis.
-6. Connected the application with Google Gemini API.
-7. Implemented AI-based budget suggestions.
-8. Implemented recommendation features.
-9. Tested the application locally.
+## Windows VS Code setup
 
-## 5. Application Features
+Open the project folder in VS Code and run:
 
-- Income entry
-- Expense tracking
-- Category-wise expenses
-- Total expense calculation
-- Remaining balance calculation
-- Spending analysis
-- AI budget suggestions
-- Smart recommendations
+```powershell
+python --version
+```
 
-## 6. Development Result
+Create a virtual environment:
 
-The PocketSmart AI application was developed as an AI-powered
-budget and recommendation assistant.
+```powershell
+python -m venv .venv
+```
+
+Activate it:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+If PowerShell blocks activation, you can run the project without activating the environment, or use Command Prompt with:
+
+```cmd
+.venv\Scripts\activate
+```
+
+Install dependencies:
+
+```powershell
+python -m pip install -r requirements.txt
+```
+
+Create your environment file:
+
+```powershell
+copy .env.example .env
+```
+
+Open `.env` and replace:
+
+```text
+GEMINI_API_KEY=YOUR_GEMINI_API_KEY_HERE
+```
+
+with your own key.
+
+Do not upload `.env` to GitHub.
+
+## Run
+
+```powershell
+python app.py
+```
+
+Open:
+
+```text
+http://127.0.0.1:5000
+```
+
+## Test
+
+Try:
+
+- Income: 30000
+- Savings goal: 5000
+- Food: 4000
+- Rent: 8000
+- Transport: 2000
+- Preferences: Save money for a laptop.
+
+Click **Analyze My Budget**.
+
+You should see:
+
+- Total expenses
+- Remaining balance
+- Expense ratio
+- Spending status
+- Category analysis
+- AI suggestions
+- Recent analyses
+
+## API endpoints
+
+### Health
+
+```text
+GET /api/health
+```
+
+### Analyze budget
+
+```text
+POST /api/analyze
+```
+
+### History
+
+```text
+GET /api/history
+```
